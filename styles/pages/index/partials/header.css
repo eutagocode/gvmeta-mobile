@@ -1,0 +1,54 @@
+@import "../../../global/normalize.css";
+@import "../../../global/variables.css";
+
+.container {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.header-content {
+    background-color: var(--color-dark10);
+    width: 100%;
+    min-height: 5rem;
+    max-height: 6.5rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+}
+
+.header-content .header-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--color-white);
+}
+
+.header-content .header-title span {
+    color: var(--color-lime);
+}
+
+.header-content .header-nav {
+    width: 3rem;
+    height: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.2rem;
+}
+
+.header-content .header-nav .header-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-white);
+}
+
+.header-content .header-nav .header-bar:nth-child(2) {
+    width: 66%;
+}
+
+.header-content .header-nav .header-bar:nth-child(3) {
+    width: 87%;
+}
