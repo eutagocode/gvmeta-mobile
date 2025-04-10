@@ -1,0 +1,50 @@
+@import "../../../global/normalize.css";
+@import "../../../global/variables.css";
+
+.main-content {
+    background-color: var(--color-dark10);
+    width: 100%;
+    height: calc(100vh - 7.3rem);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.8rem;
+}
+
+.main-content > h3 {
+    font-size: 1.1rem;
+    justify-self: start;
+    align-self: start;
+}
+
+.main-content .main-results {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6, auto);
+    gap: 0.5rem;
+}
+
+.main-content .main-results .main-item {
+    background-color: var(--color-dark20);
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-content .main-results .main-item .item-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-lime);
+}
+
+.main-content .main-results .main-item span {
+    font-weight: 100;
+    font-size: 1.3rem;
+    color: var(--color-white);
+}
