@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,41 +10,77 @@
         <div class="container">
             <header class="header-content">
                 <h1 class="header-title">GV<span>META</span></h1>
-                <nav class="header-nav">
-                    <li class="header-bar"></li>
-                    <li class="header-bar"></li>
-                    <li class="header-bar"></li>
+                <nav class="header-navbar" onclick="handleShowNav()">
+                    <li class="nav-item" id="nav-item1"></li>
+                    <li class="nav-item" id="nav-item2"></li>
+                    <li class="nav-item" id="nav-item3"></li>
                 </nav>
+                <section class="nav" id="nav-section">
+                    <header class="nav-header">
+                        <div class="profile-img-cover">
+                            <img
+                                class="profile-img"
+                                src="./assets/profile.svg"
+                                alt="Imagem de perfil em branco"
+                            />
+                        </div>
+                        <div class="profile-text">
+                            <h2 class="profile-name">User</h2>
+                            <p class="profile-word">Vendedor</p>
+                        </div>
+                    </header>
+                    <hr class="division" />
+                    <h3>Interações</h3>
+                    <main class="nav-main">
+                        <a
+                            class="interaction-btn"
+                            href="./templates/newGoal.html"
+                            >Criar uma nova meta</a
+                        >
+                        <a
+                            class="interaction-btn"
+                            href="./templates/deleteGoal.html"
+                            >Zerar a meta atual</a
+                        >
+                        <a
+                            class="interaction-btn"
+                            href="./templates/newSale.html"
+                            >Adicionar uma venda</a
+                        >
+                        <a
+                            class="interaction-btn"
+                            href="./templates/removeSale.html"
+                            >Remover uma venda</a
+                        >
+                    </main>
+                </section>
             </header>
             <main class="main-content">
                 <h3>Meus Resultados</h3>
-                <ul class="main-results">
+                <ul id="main-results" class="main-results">
                     <li class="main-item">
                         <p class="item-text">Meta:</p>
-                        <span id="goal">105.000,00</span>
-                    </li>
-                    <li class="main-item">
-                        <p class="item-text">Proporcional:</p>
-                        <span id="proportional">37.569,00</span>
+                        <span id="goal"></span>
                     </li>
                     <li class="main-item">
                         <p class="item-text">Vendido:</p>
-                        <span id="sold">69.332,00</span>
+                        <span id="sold"></span>
                     </li>
                     <li class="main-item">
                         <p class="item-text">Dias faltando:</p>
-                        <span id="days-left">23</span>
+                        <span id="days-left"></span>
                     </li>
                     <li class="main-item">
                         <p class="item-text">Diária:</p>
-                        <span id="daily">3.994,00</span>
+                        <span id="daily"></span>
                     </li>
                     <li class="main-item">
                         <p class="item-text">Á vender:</p>
-                        <span id="for-sale">59.834,00</span>
+                        <span id="for-sale"></span>
                     </li>
                 </ul>
             </main>
         </div>
+        <script src="./scripts/app.js"></script>
     </body>
 </html>

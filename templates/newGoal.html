@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GVMETA</title>
+        <link rel="stylesheet" href="../styles/pages/creategoal/index.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header class="header-content">
+                <h1 class="header-title">GV<span>META</span></h1>
+                <p class="header-subtitle">
+                    Nova meta? Bora, essa vai ser <span>fácil</span>
+                </p>
+            </header>
+            <hr class="division" />
+            <main class="main-content">
+                <label>Qual o desafio da vez?</label>
+                <input
+                    id="input-create-goal"
+                    type="text"
+                    placeholder="R$0,00"
+                    oninput="formatNumbers(this)"
+                />
+                <a onclick="createGoal()" href="../index.html">CRIAR META</a>
+            </main>
+        </div>
+        <script src="../scripts/app.js"></script>
+    </body>
+</html>

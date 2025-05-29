@@ -1,0 +1,4 @@
+@import "../../global/normalize.css";
+@import "../../global/variables.css";
+@import "partials/header.css";
+@import "partials/main.css";

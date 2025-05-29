@@ -1,0 +1,19 @@
+.main-content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.main-content a {
+    align-self: end;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    height: 3rem;
+    background-color: var(--color-dark20);
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-red);
+    cursor: pointer;
+}
