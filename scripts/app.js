@@ -20,18 +20,23 @@ const date = new Date();
 const navItem1 = document.getElementById("nav-item1");
 const navItem2 = document.getElementById("nav-item2");
 const navItem3 = document.getElementById("nav-item3");
-const navSection = document.getElementById("nav-section");
+const asideSection = document.getElementById("aside-section");
 const createGoalBtn = document.getElementById("create-goal-btn");
 
 // Mostra e esconde a sidebar para navegação
 function handleShowNav() {
-    if (navSection.classList.contains("nav-open")) {
-        navSection.classList.remove("nav-open");
-        navSection.classList.add("nav-close");
+    let display = window.getComputedStyle(asideSection).display;
+
+    if (display === "none") {
+        asideSection.style.display = "flex";
+        asideSection.classList.remove("aside-close");
+        asideSection.classList.add("aside-open");
     } else {
-        navSection.classList.remove("nav-close");
-        navSection.classList.add("nav-open");
+        asideSection.style.display = "none";
+        asideSection.classList.remove("aside-open");
+        asideSection.classList.add("aside-close");
     }
+
     navItem1.classList.toggle("d-none");
     navItem2.classList.toggle("nav-item2-open");
     navItem3.classList.toggle("nav-item3-open");
@@ -61,9 +66,15 @@ function viewGoal() {
 }
 addEventListener("DOMContentLoaded", viewGoal);
 
+function updateDisplay() {
+    const data = JSON.parse(localStorage.getItem(SECRET_KEY));
+
+    console.log(data);
+}
+
 class Goal {
     constructor(goal) {
-        this.goal = goal;
+        this.goal = parseFloat(goal);
         this.sold = 0;
 
         const year = date.getFullYear();
@@ -71,32 +82,80 @@ class Goal {
         const day = date.getDate();
 
         this.days = getRemainingBusinessDays(year, month, day);
-        this.forSale = this.goal - this.sold;
+        this.forSale = this.goal;
         this.daily = Math.round(this.forSale / this.days);
     }
+}
+
+function unformattedValue(element) {
+    return element.value
+        .replace("R$", "")
+        .replace("R$ ", "")
+        .replace(/\./g, "")
+        .replace(" ", "")
+        .trim();
 }
 
 // Criar uma nova meta
 function createGoal() {
     const inputCreateGoal = document.getElementById("input-create-goal");
 
-    const formattedValue = inputCreateGoal.value;
-
-    const unformattedValue = formattedValue
-        .replace("R$", "")
-        .replace("R$ ", "")
-        .replace(/\./g, "")
-        .replace(" ", "")
-        .trim();
-
-    let goal = new Goal(unformattedValue);
+    let goal = new Goal(unformattedValue(inputCreateGoal));
 
     localStorage.setItem(SECRET_KEY, JSON.stringify(goal));
 }
 
-function deleteGoal() {}
-function addSale() {}
-function removeSale() {}
+function deleteGoal() {
+    return localStorage.removeItem(SECRET_KEY);
+}
+
+function updateDisplay(input, operation) {
+    let data = JSON.parse(localStorage.getItem(SECRET_KEY));
+
+    switch (operation) {
+        case "+": {
+            data.sold += input;
+            break;
+        }
+        case "-": {
+            data.sold -= input;
+            break;
+        }
+        default:
+            break;
+    }
+
+    data.forSale = data.goal - data.sold;
+    data.daily = Math.round(data.forSale / data.days);
+
+    return data;
+}
+
+function addSale() {
+    const inputSale = document.getElementById("input-new-sale");
+
+    newSale = parseFloat(unformattedValue(inputSale));
+
+    localStorage.setItem(
+        SECRET_KEY,
+        JSON.stringify(updateDisplay(newSale, "+")),
+    );
+
+    inputSale.value = "";
+}
+
+function removeSale() {
+    const inputSale = document.getElementById("input-remove-sale");
+
+    removeSale = parseFloat(unformattedValue(inputSale));
+
+    localStorage.setItem(
+        SECRET_KEY,
+        JSON.stringify(updateDisplay(removeSale, "-")),
+    );
+
+    inputSale.value = "";
+}
 
 // Formatação dos valores dos inputs para colocar pontuação e o R$
 function formatNumbers(input) {

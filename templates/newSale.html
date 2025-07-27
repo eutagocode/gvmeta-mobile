@@ -17,9 +17,15 @@
             <hr class="division" />
             <main class="main-content">
                 <label>Quanto foi o valor da venda?</label>
-                <input type="number" placeholder="R$0,00" />
-                <a href="/index.html">ADICIONAR VENDA</a>
+                <input
+                    id="input-new-sale"
+                    type="text"
+                    oninput="formatNumbers(this)"
+                    placeholder="R$0,00"
+                />
+                <a onclick="addSale()" href="/index.html">ADICIONAR VENDA</a>
             </main>
         </div>
+        <script src="../scripts/app.js"></script>
     </body>
 </html>

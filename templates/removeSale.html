@@ -17,9 +17,15 @@
             <hr class="division" />
             <main class="main-content">
                 <label>Quanto foi o valor do cancelamento?</label>
-                <input type="number" placeholder="R$0,00" />
-                <a href="/index.html">REMOVER VENDA</a>
+                <input
+                    id="input-remove-sale"
+                    type="text"
+                    oninput="formatNumbers(this)"
+                    placeholder="R$0,00"
+                />
+                <a onclick="removeSale()" href="/index.html">REMOVER VENDA</a>
             </main>
         </div>
+        <script src="../scripts/app.js"></script>
     </body>
 </html>
